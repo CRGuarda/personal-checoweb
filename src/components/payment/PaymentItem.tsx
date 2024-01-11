@@ -2,7 +2,7 @@
 import { ChangeEvent, useState } from 'react'
 import Image from 'next/image'
 import { queuePayment } from '@/types/payment.type'
-import { getLocalDate } from '@/utils/get-local-date'
+/* import { getLocalDate } from '@/utils/get-local-date' */
 import { useAlerts } from '@/hooks/useAlerts'
 import Swal from 'sweetalert2'
 
@@ -136,7 +136,7 @@ export const PaymentItem = ({
           </div>
           <div className='flex flex-col'>
             <span className='font-bold'>Fecha y hora</span>
-            <span>{getLocalDate(payment?.lastModified)}</span>
+            {/*  <span>{getLocalDate(payment?.lastModified)}</span> */}
           </div>
           <div className='flex flex-col'>
             <span className='font-bold'>Monto de cuota</span>
