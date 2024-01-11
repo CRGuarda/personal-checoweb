@@ -3,7 +3,7 @@ import PaymentList from '@/components/payment/PaymentList'
 
 const getPayments = async () => {
   try {
-    const paymentsRequest = await fetch(`${process.env.APP_URL}/api/payments`)
+    const paymentsRequest = await fetch(`${process.env.APP_URL}/api/payments`, { cache: 'no-store' })
     if (!paymentsRequest.ok) return undefined
     return paymentsRequest.json()
   } catch (error) {
