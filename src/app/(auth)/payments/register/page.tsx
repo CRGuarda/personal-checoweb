@@ -1,10 +1,19 @@
 import PaymentList from '@/components/payment/PaymentList'
-import { getQueuePayments } from '@/lib/aws-s3/get-queue-payments'
 // ToDo: Establish if want cache for like 2 seconds.
 
+const getPayments = async () => {
+  try {
+    const paymentsRequest = await fetch(`${process.env.APP_URL}/api/payments`)
+    if (!paymentsRequest.ok) return undefined
+    return paymentsRequest.json()
+  } catch (error) {
+    return undefined
+  }
+}
+
 const page = async () => {
-  const paymentsList = await getQueuePayments()
-  if (!paymentsList)
+  const paymentsList = await getPayments()
+  if (!paymentsList || !paymentsList.length)
     return (
       <h2 className='h-max w-full text-4xl md:text-7xl text-center font-bold bg-accent-green'>Payment queue empty</h2>
     )
