@@ -9,6 +9,7 @@ export type queuePayment = {
   phoneNumber: string
   userData: userData
   lastModified: string | Date
+  localDate: string
   imageURL: string
   key: string
 }

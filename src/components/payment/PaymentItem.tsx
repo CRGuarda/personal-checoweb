@@ -2,7 +2,6 @@
 import { ChangeEvent, useState } from 'react'
 import Image from 'next/image'
 import { queuePayment } from '@/types/payment.type'
-import { getLocalDate } from '@/utils/get-local-date'
 import { useAlerts } from '@/hooks/useAlerts'
 import Swal from 'sweetalert2'
 
@@ -22,8 +21,6 @@ export const PaymentItem = ({
     Key: payment?.key,
     FECHA_HORA: payment?.lastModified,
   })
-
-  const [lastModifiedDate] = useState(() => getLocalDate(payment?.lastModified))
   const handleQuotaChange = (e: ChangeEvent<HTMLInputElement>) =>
     setPaymentForm((prevState) => ({
       ...prevState,
@@ -137,7 +134,7 @@ export const PaymentItem = ({
           </div>
           <div className='flex flex-col'>
             <span className='font-bold'>Fecha y hora</span>
-            <span>{lastModifiedDate}</span>
+            <span>{payment?.localDate}</span>
           </div>
           <div className='flex flex-col'>
             <span className='font-bold'>Monto de cuota</span>
