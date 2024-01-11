@@ -3,7 +3,7 @@ import { getClientByPhoneNumberQuery } from '@/lib/aws-rds/queries'
 import { s3 } from '@/lib/aws-s3'
 import { getSignedURL } from '@/lib/aws-s3/get-signed-url'
 import { userData } from '@/types/payment.type'
-import { getLocalDate } from '@/utils/get-local-date'
+/* import { getLocalDate } from '@/utils/get-local-date' */
 import { ListObjectsV2Command } from '@aws-sdk/client-s3'
 
 const params = {
@@ -30,7 +30,7 @@ export const getQueuePayments = async () => {
         return {
           phoneNumber,
           userData,
-          localDate: getLocalDate(lastModified || ''),
+          localDate: new Date(lastModified || ''),
           lastModified: lastModified || '',
           imageURL,
           key: Key as string,
