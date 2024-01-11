@@ -30,7 +30,6 @@ export const getQueuePayments = async () => {
         return {
           phoneNumber,
           userData,
-          localDate: new Date(lastModified || ''),
           lastModified: lastModified || '',
           imageURL,
           key: Key as string,

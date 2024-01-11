@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { queuePayment } from '@/types/payment.type'
 import { useAlerts } from '@/hooks/useAlerts'
 import Swal from 'sweetalert2'
+import { useFormatDate } from '@/hooks/useFormatDate'
 
 export const PaymentItem = ({
   payment,
@@ -21,6 +22,8 @@ export const PaymentItem = ({
     Key: payment?.key,
     FECHA_HORA: payment?.lastModified,
   })
+
+  const { formattedDate } = useFormatDate(payment?.lastModified)
   const handleQuotaChange = (e: ChangeEvent<HTMLInputElement>) =>
     setPaymentForm((prevState) => ({
       ...prevState,
@@ -134,7 +137,7 @@ export const PaymentItem = ({
           </div>
           <div className='flex flex-col'>
             <span className='font-bold'>Fecha y hora</span>
-            <span>{payment?.localDate}</span>
+            {formattedDate && <span>{formattedDate}</span>}
           </div>
           <div className='flex flex-col'>
             <span className='font-bold'>Monto de cuota</span>
