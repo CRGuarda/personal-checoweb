@@ -22,6 +22,8 @@ export const PaymentItem = ({
     Key: payment?.key,
     FECHA_HORA: payment?.lastModified,
   })
+
+  const [lastModifiedDate] = useState(() => getLocalDate(payment?.lastModified))
   const handleQuotaChange = (e: ChangeEvent<HTMLInputElement>) =>
     setPaymentForm((prevState) => ({
       ...prevState,
@@ -135,7 +137,7 @@ export const PaymentItem = ({
           </div>
           <div className='flex flex-col'>
             <span className='font-bold'>Fecha y hora</span>
-            {payment.lastModified && <span>{getLocalDate(payment?.lastModified)}</span>}
+            <span>{lastModifiedDate}</span>
           </div>
           <div className='flex flex-col'>
             <span className='font-bold'>Monto de cuota</span>
